@@ -45,6 +45,20 @@ def stable_deck_id(name: str) -> int:
 def deck_for_topic(topic: str) -> str:
     t = topic.lower()
 
+    module_names = {
+        "03": "03 Word Order", "04": "04 Conjunctions", "05": "05 Tenses",
+        "06": "06 Modal & Infinitive", "07": "07 Adjective Declension",
+        "08": "08 Pronouns", "09": "09 Relative Clauses", "10": "10 Passive",
+        "11": "11 Konjunktiv II", "12": "12 Indirect Speech",
+        "13": "13 Noun Grammar", "14": "14 Comparison", "15": "15 Negation",
+        "16": "16 Questions", "17": "17 B2 Structures", "18": "18 Typical Mistakes",
+        "19": "19 Core Grammar Gaps",
+    }
+    prefix = topic[1:3] if topic.startswith("M") else ""
+    if prefix in module_names and len(topic) > 4:
+        subtopic = topic[4:].strip()
+        return f"Deutsch Master Grammar::{module_names[prefix]}::{subtopic}"
+
     if "nominativ" in t:
         return "Deutsch Master Grammar::01 Cases::01 Nominativ"
     if "akkusativ vs dativ" in t:
