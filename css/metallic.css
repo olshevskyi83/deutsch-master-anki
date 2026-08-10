@@ -1,0 +1,83 @@
+.card {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  text-align: center;
+  background: linear-gradient(145deg, #d7d7d7 0%, #bcbcbc 35%, #eeeeee 60%, #c4c4c4 100%);
+  color: #242424 !important;
+  padding: 24px;
+}
+
+.card, .card * {
+  color: #242424 !important;
+}
+
+.wrap {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.level {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255,255,255,.45);
+  color: #2a2a2a !important;
+  font-size: 14px;
+  margin-bottom: 14px;
+}
+
+.question {
+  font-size: 31px;
+  font-weight: 750;
+  line-height: 1.3;
+  margin: 18px 0;
+  color: #181818 !important;
+}
+
+.answer {
+  font-size: 24px;
+  line-height: 1.5;
+  color: #242424 !important;
+}
+
+.rule, .example, .error, .tip {
+  text-align: left;
+  padding: 12px 14px;
+  border-radius: 8px;
+  margin: 14px 0;
+  color: #242424 !important;
+}
+
+.rule {
+  background: rgba(90,120,160,.14);
+  border-left: 5px solid #657b9b;
+}
+
+.example {
+  background: rgba(80,135,90,.13);
+  border-left: 5px solid #6b8f70;
+}
+
+.error {
+  background: rgba(160,80,80,.11);
+  border-left: 5px solid #9a6666;
+}
+
+.tip {
+  background: rgba(170,145,55,.12);
+  border-left: 5px solid #9c874d;
+}
+
+hr#answer {
+  border: 0;
+  border-top: 1px solid rgba(0,0,0,.28);
+  margin: 24px auto;
+  width: 78%;
+}
+
+/* Force readable text in Anki dark/night mode too */
+.nightMode .card,
+.nightMode .card *,
+.card.night_mode,
+.card.night_mode * {
+  color: #242424 !important;
+}

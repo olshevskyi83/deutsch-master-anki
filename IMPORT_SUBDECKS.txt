@@ -1,0 +1,31 @@
+ВАЖЛИВО — нова версія з підколодами
+
+1. У Terminal:
+   cd ~/Downloads/deutsch-master-anki
+   source .venv/bin/activate
+   python build.py
+
+2. Імпортуй:
+   output/Deutsch_Master_Grammar_Metallic_SUBDECKS.apkg
+
+3. В Anki має з'явитися дерево:
+
+Deutsch Master Grammar
+  01 Cases
+    01 Nominativ
+    02 Akkusativ
+    03 Dativ
+    04 Akkusativ vs Dativ
+    05 Genitiv
+  02 Prepositions
+    01 Akkusativ
+    02 Dativ
+    03 Contractions
+    04 Wechselpräpositionen
+    05 Lage vs Bewegung
+    06 Zeit
+    07 Ort & Richtung
+    08 Typische Verwechslungen
+
+Число 20 на головному екрані Anki — зазвичай денний ліміт нових карток,
+а не загальна кількість карток у колоді.

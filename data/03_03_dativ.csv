@@ -1,0 +1,37 @@
+Front,Back,Level,Topic,Tags
+Що таке Dativ?,"<div class=""rule""><b>Dativ</b><br>Часто позначає непрямий додаток: кому? чому?</div><div class=""example""><b>Приклад:</b><br>Ich gebe <b>dem Mann</b> das Buch.</div>",A2,03 Dativ,grammar cases dativ A2
+Які питання має Dativ?,"<div class=""rule""><b>Питання</b><br><b>Wem?</b> — кому? чому?</div><div class=""example""><b>Приклад:</b><br>Wem hilfst du? — <b>Meinem Bruder.</b></div>",A2,03 Dativ,grammar cases dativ A2
+der → Dativ?,"<div class=""rule""><b>Форма</b><br><b>dem</b></div><div class=""example""><b>Приклад:</b><br>Ich helfe <b>dem Mann</b>.</div>",A2,03 Dativ,grammar cases dativ article
+die → Dativ?,"<div class=""rule""><b>Форма</b><br><b>der</b></div><div class=""example""><b>Приклад:</b><br>Ich helfe <b>der Frau</b>.</div>",A2,03 Dativ,grammar cases dativ article
+das → Dativ?,"<div class=""rule""><b>Форма</b><br><b>dem</b></div><div class=""example""><b>Приклад:</b><br>Ich helfe <b>dem Kind</b>.</div>",A2,03 Dativ,grammar cases dativ article
+die (Plural) → Dativ?,"<div class=""rule""><b>Форма</b><br><b>den + -n</b></div><div class=""example""><b>Приклад:</b><br>Ich helfe <b>den Kindern</b>.</div>",A2,03 Dativ,grammar cases dativ article
+ein (чол./сер.) → Dativ?,"<div class=""rule""><b>Форма</b><br><b>einem</b></div><div class=""example""><b>Приклад:</b><br>Ich helfe <b>einem Freund</b>.</div>",A2,03 Dativ,grammar cases dativ article
+eine → Dativ?,"<div class=""rule""><b>Форма</b><br><b>einer</b></div><div class=""example""><b>Приклад:</b><br>Ich helfe <b>einer Freundin</b>.</div>",A2,03 Dativ,grammar cases dativ article
+mein (чол./сер.) → Dativ?,"<div class=""rule""><b>Форма</b><br><b>meinem</b></div><div class=""example""><b>Приклад:</b><br>Ich helfe <b>meinem Bruder</b>.</div>",A2,03 Dativ,grammar cases dativ article
+meine (жін.) → Dativ?,"<div class=""rule""><b>Форма</b><br><b>meiner</b></div><div class=""example""><b>Приклад:</b><br>Ich helfe <b>meiner Schwester</b>.</div>",A2,03 Dativ,grammar cases dativ article
+Що відбувається з іменником у Dativ Plural?,"<div class=""rule""><b>Dativ Plural</b><br>Артикль стає <b>den</b>, а іменник зазвичай отримує <b>-n</b>, якщо його ще немає.</div><div class=""example""><b>Приклад:</b><br>mit <b>den Kindern</b></div>",A2,03 Dativ,grammar cases dativ plural
+ich → Dativ?,"<div class=""rule""><b>Особовий займенник</b><br><b>mir</b></div><div class=""example""><b>Приклад:</b><br>Er hilft <b>mir</b>.</div>",A2,03 Dativ,grammar cases dativ pronoun
+du → Dativ?,"<div class=""rule""><b>Особовий займенник</b><br><b>dir</b></div><div class=""example""><b>Приклад:</b><br>Ich danke <b>dir</b>.</div>",A2,03 Dativ,grammar cases dativ pronoun
+er → Dativ?,"<div class=""rule""><b>Особовий займенник</b><br><b>ihm</b></div><div class=""example""><b>Приклад:</b><br>Das gehört <b>ihm</b>.</div>",A2,03 Dativ,grammar cases dativ pronoun
+sie → Dativ?,"<div class=""rule""><b>Особовий займенник</b><br><b>ihr</b></div><div class=""example""><b>Приклад:</b><br>Ich antworte <b>ihr</b>.</div>",A2,03 Dativ,grammar cases dativ pronoun
+es → Dativ?,"<div class=""rule""><b>Особовий займенник</b><br><b>ihm</b></div><div class=""example""><b>Приклад:</b><br>Ich gebe <b>ihm</b> Wasser.</div>",A2,03 Dativ,grammar cases dativ pronoun
+wir → Dativ?,"<div class=""rule""><b>Особовий займенник</b><br><b>uns</b></div><div class=""example""><b>Приклад:</b><br>Er hilft <b>uns</b>.</div>",A2,03 Dativ,grammar cases dativ pronoun
+ihr → Dativ?,"<div class=""rule""><b>Особовий займенник</b><br><b>euch</b></div><div class=""example""><b>Приклад:</b><br>Ich danke <b>euch</b>.</div>",A2,03 Dativ,grammar cases dativ pronoun
+sie/Sie → Dativ?,"<div class=""rule""><b>Особовий займенник</b><br><b>ihnen/Ihnen</b></div><div class=""example""><b>Приклад:</b><br>Ich antworte <b>Ihnen</b>.</div>",A2,03 Dativ,grammar cases dativ pronoun
+Який відмінок вимагає дієслово <b>helfen</b>?,"<div class=""rule""><b>Dativ</b><br>допомагати</div><div class=""example""><b>Приклад:</b><br>Ich helfe <b>meinem Bruder</b>.</div>",A2–B1,03 Dativ,grammar cases dativ verb
+Який відмінок вимагає дієслово <b>danken</b>?,"<div class=""rule""><b>Dativ</b><br>дякувати</div><div class=""example""><b>Приклад:</b><br>Ich danke <b>dir</b>.</div>",A2–B1,03 Dativ,grammar cases dativ verb
+Який відмінок вимагає дієслово <b>gefallen</b>?,"<div class=""rule""><b>Dativ</b><br>подобатися</div><div class=""example""><b>Приклад:</b><br>Das Buch gefällt <b>mir</b>.</div>",A2–B1,03 Dativ,grammar cases dativ verb
+Який відмінок вимагає дієслово <b>gehören</b>?,"<div class=""rule""><b>Dativ</b><br>належати</div><div class=""example""><b>Приклад:</b><br>Das Auto gehört <b>meinem Vater</b>.</div>",A2–B1,03 Dativ,grammar cases dativ verb
+Який відмінок вимагає дієслово <b>antworten</b>?,"<div class=""rule""><b>Dativ</b><br>відповідати</div><div class=""example""><b>Приклад:</b><br>Ich antworte <b>dem Lehrer</b>.</div>",A2–B1,03 Dativ,grammar cases dativ verb
+Який відмінок вимагає дієслово <b>folgen</b>?,"<div class=""rule""><b>Dativ</b><br>слідувати</div><div class=""example""><b>Приклад:</b><br>Der Hund folgt <b>dem Mann</b>.</div>",A2–B1,03 Dativ,grammar cases dativ verb
+Який відмінок вимагає дієслово <b>fehlen</b>?,"<div class=""rule""><b>Dativ</b><br>бракувати</div><div class=""example""><b>Приклад:</b><br>Du fehlst <b>mir</b>.</div>",A2–B1,03 Dativ,grammar cases dativ verb
+Який відмінок вимагає дієслово <b>vertrauen</b>?,"<div class=""rule""><b>Dativ</b><br>довіряти</div><div class=""example""><b>Приклад:</b><br>Ich vertraue <b>dir</b>.</div>",A2–B1,03 Dativ,grammar cases dativ verb
+Який відмінок вимагає дієслово <b>gratulieren</b>?,"<div class=""rule""><b>Dativ</b><br>вітати</div><div class=""example""><b>Приклад:</b><br>Wir gratulieren <b>ihm</b>.</div>",A2–B1,03 Dativ,grammar cases dativ verb
+Який відмінок вимагає дієслово <b>passen</b>?,"<div class=""rule""><b>Dativ</b><br>пасувати / підходити</div><div class=""example""><b>Приклад:</b><br>Die Jacke passt <b>mir</b>.</div>",A2–B1,03 Dativ,grammar cases dativ verb
+Який відмінок вимагає дієслово <b>schmecken</b>?,"<div class=""rule""><b>Dativ</b><br>смакувати</div><div class=""example""><b>Приклад:</b><br>Die Suppe schmeckt <b>mir</b>.</div>",A2–B1,03 Dativ,grammar cases dativ verb
+Ich helfe ___ Mann. (der),"<div class=""rule""><b>Відповідь</b><br><b>dem Mann</b></div><div class=""example""><b>Приклад:</b><br>helfen → Dativ.</div>",A2,03 Dativ,grammar cases dativ exercise
+Ich danke ___. (du),"<div class=""rule""><b>Відповідь</b><br><b>dir</b></div><div class=""example""><b>Приклад:</b><br>danken → Dativ; du → dir.</div>",A2,03 Dativ,grammar cases dativ exercise
+Das gehört ___. (er),"<div class=""rule""><b>Відповідь</b><br><b>ihm</b></div><div class=""example""><b>Приклад:</b><br>gehören → Dativ; er → ihm.</div>",A2,03 Dativ,grammar cases dativ exercise
+Wir helfen ___ Kindern. (die),"<div class=""rule""><b>Відповідь</b><br><b>den Kindern</b></div><div class=""example""><b>Приклад:</b><br>Dativ Plural: den + -n.</div>",A2,03 Dativ,grammar cases dativ exercise
+Die Jacke passt ___. (ich),"<div class=""rule""><b>Відповідь</b><br><b>mir</b></div><div class=""example""><b>Приклад:</b><br>passen → Dativ; ich → mir.</div>",A2,03 Dativ,grammar cases dativ exercise
+Ich antworte ___ Lehrerin. (die),"<div class=""rule""><b>Відповідь</b><br><b>der Lehrerin</b></div><div class=""example""><b>Приклад:</b><br>antworten → Dativ.</div>",A2,03 Dativ,grammar cases dativ exercise
