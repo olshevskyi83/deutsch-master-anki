@@ -1,6 +1,10 @@
 from pathlib import Path
 import csv
 import hashlib
+import json
+import sqlite3
+import tempfile
+import zipfile
 import genanki
 
 ROOT = Path(__file__).resolve().parent
@@ -13,6 +17,7 @@ QFMT = (ROOT / "templates" / "front.html").read_text(encoding="utf-8")
 AFMT = (ROOT / "templates" / "back.html").read_text(encoding="utf-8")
 
 MODEL_ID = 1607392319
+REQUIRED_FIELDS = ("Front", "Back", "Level", "Topic", "Tags")
 
 model = genanki.Model(
     MODEL_ID,
@@ -77,14 +82,41 @@ def get_deck(name: str):
         decks[name] = genanki.Deck(stable_deck_id(name), name)
     return decks[name]
 
-count = 0
-counts = {}
+csv_counts = {}
+deck_counts = {}
+expected_guid_deck = {}
+seen_keys = set()
 
 for csv_file in sorted(DATA.glob("*.csv")):
     with csv_file.open(encoding="utf-8", newline="") as f:
         reader = csv.DictReader(f)
-        for row in reader:
+        if reader.fieldnames != list(REQUIRED_FIELDS):
+            raise ValueError(
+                f"{csv_file.name}: expected CSV header {','.join(REQUIRED_FIELDS)}; "
+                f"got {','.join(reader.fieldnames or [])}"
+            )
+
+        csv_count = 0
+        for line_number, row in enumerate(reader, start=2):
+            missing = [field for field in REQUIRED_FIELDS if not (row.get(field) or "").strip()]
+            if missing:
+                raise ValueError(
+                    f"{csv_file.name}:{line_number}: empty required field(s): {', '.join(missing)}"
+                )
+
+            key = (row["Front"], row["Topic"])
+            if key in seen_keys:
+                raise ValueError(
+                    f"{csv_file.name}:{line_number}: duplicate (Front, Topic): {key!r}"
+                )
+            seen_keys.add(key)
+
             deck_name = deck_for_topic(row["Topic"])
+            if deck_name.endswith("::99 Other"):
+                raise ValueError(
+                    f"{csv_file.name}:{line_number}: completed topic is not mapped to a subdeck: "
+                    f"{row['Topic']!r}"
+                )
             deck = get_deck(deck_name)
 
             note = genanki.Note(
@@ -94,19 +126,80 @@ for csv_file in sorted(DATA.glob("*.csv")):
             )
 
             # Stable GUID: repeated builds update the same note instead of duplicating it.
-            key = f'{row["Front"]}|{row["Topic"]}'
-            note.guid = hashlib.sha1(key.encode("utf-8")).hexdigest()[:10]
+            guid_key = f'{row["Front"]}|{row["Topic"]}'
+            note.guid = hashlib.sha1(guid_key.encode("utf-8")).hexdigest()[:10]
+            if note.guid in expected_guid_deck:
+                raise ValueError(f"GUID collision for {key!r}: {note.guid}")
+            expected_guid_deck[note.guid] = deck_name
 
             deck.add_note(note)
-            count += 1
-            counts[deck_name] = counts.get(deck_name, 0) + 1
+            csv_count += 1
+            deck_counts[deck_name] = deck_counts.get(deck_name, 0) + 1
+        csv_counts[csv_file.name] = csv_count
+
+if not csv_counts:
+    raise ValueError("No CSV files found in data/")
+
+deck_ids = [deck.deck_id for deck in decks.values()]
+if len(deck_ids) != len(set(deck_ids)):
+    raise ValueError("Stable deck ID collision detected")
 
 out = OUTPUT / "Deutsch_Master_Grammar_Metallic_SUBDECKS.apkg"
 genanki.Package(list(decks.values())).write_to_file(out)
 
+def validate_package(package_path: Path):
+    """Validate the generated collection, including each card's actual deck ID."""
+    with zipfile.ZipFile(package_path) as package, tempfile.NamedTemporaryFile() as db_file:
+        db_file.write(package.read("collection.anki2"))
+        db_file.flush()
+
+        connection = sqlite3.connect(db_file.name)
+        try:
+            decks_json = json.loads(connection.execute("SELECT decks FROM col").fetchone()[0])
+            actual_notes = connection.execute("SELECT COUNT(*) FROM notes").fetchone()[0]
+            actual_cards = connection.execute("SELECT COUNT(*) FROM cards").fetchone()[0]
+            rows = connection.execute(
+                "SELECT notes.guid, cards.did FROM notes JOIN cards ON cards.nid = notes.id"
+            ).fetchall()
+        finally:
+            connection.close()
+
+    expected_notes = len(expected_guid_deck)
+    if actual_notes != expected_notes:
+        raise ValueError(f"Package note count mismatch: expected {expected_notes}, got {actual_notes}")
+    if actual_cards != expected_notes:
+        raise ValueError(f"Package card count mismatch: expected {expected_notes}, got {actual_cards}")
+
+    actual_deck_counts = {}
+    for guid, deck_id in rows:
+        deck = decks_json.get(str(deck_id))
+        if not deck:
+            raise ValueError(f"Card for GUID {guid} references unknown deck ID {deck_id}")
+        actual_deck_name = deck["name"]
+        expected_deck_name = expected_guid_deck.get(guid)
+        if expected_deck_name != actual_deck_name:
+            raise ValueError(
+                f"Card deck mismatch for GUID {guid}: expected {expected_deck_name!r}, "
+                f"got {actual_deck_name!r}"
+            )
+        actual_deck_counts[actual_deck_name] = actual_deck_counts.get(actual_deck_name, 0) + 1
+
+    if actual_deck_counts != deck_counts:
+        raise ValueError(
+            f"Package subdeck counts mismatch: expected {deck_counts!r}, got {actual_deck_counts!r}"
+        )
+    return actual_notes, actual_cards, actual_deck_counts
+
+
+note_count, card_count, verified_deck_counts = validate_package(out)
+
 print(f"OK: {out}")
-print(f"Cards: {count}")
-print("")
-print("Subdecks:")
-for name in sorted(counts):
-    print(f"  {counts[name]:>3}  {name}")
+print(f"CSV files: {len(csv_counts)}")
+print("CSV rows:")
+for name in sorted(csv_counts):
+    print(f"  {csv_counts[name]:>3}  {name}")
+print(f"Notes: {note_count}")
+print(f"Cards: {card_count}")
+print("Cards per subdeck (verified in collection.anki2):")
+for name in sorted(verified_deck_counts):
+    print(f"  {verified_deck_counts[name]:>3}  {name}")
